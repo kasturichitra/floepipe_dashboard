@@ -1,0 +1,60 @@
+
+.sidebar {
+  @apply w-64 bg-secondary text-white flex flex-col p-6;
+}
+
+.sidebar-title {
+  @apply text-xl font-bold mb-6;
+}
+
+.sidebar-section-title {
+  @apply text-gray-400 text-xs uppercase mb-2;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 px-4 py-2.5 rounded-lg cursor-pointer transition-all duration-200 text-gray-300 hover:bg-white/10 hover:text-white;
+}
+
+.sidebar-item-active {
+  @apply bg-gradient-to-r from-purple-700 to-purple-500 text-white;
+}
+
+.main-content {
+  @apply flex-1 bg-gray-50 p-8 overflow-y-auto;
+}
+
+.top-bar-btn {
+  @apply flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-md text-sm hover:bg-primary hover:text-white transition;
+}
+
+.add-account-btn {
+  @apply flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-md mb-5 hover:bg-primary hover:text-white transition;
+}
+.prev-transactions {
+  @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+}
+
+.prev-transactions-title {
+  @apply text-lg font-semibold mb-3;
+}
+
+.prev-transactions-text {
+  @apply text-center text-gray-500 py-6;
+}
+
+.blogs-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4;
+}
+
+.blog-card {
+  @apply text-white rounded-xl p-4 shadow hover:shadow-md transition;
+  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+}
+
+.blog-card-title {
+  @apply font-semibold text-base mb-1;
+}
+
+.blog-card-desc {
+  @apply text-sm opacity-90;
+}

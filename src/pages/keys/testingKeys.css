@@ -1,0 +1,34 @@
+.testingKeysDiv{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 40px;
+}
+.genDiv{
+    border: 2px solid rgb(145, 145, 145);
+    border-radius: 1rem;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-weight: 400;
+    font-size: large;
+}
+.genBtn{
+    padding: 15px 30px;
+    border-radius: 1rem;
+}
+.table{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 15px;
+}
+.tableDiv{
+    margin-top: 15px;
+}
+.keyTH{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px; 
+}

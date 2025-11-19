@@ -1,0 +1,33 @@
+.changedBtn{
+    background-color: rgb(0, 0, 0);
+    color: #FFD65A;
+    padding: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    font-size: medium;
+    border: none;
+}
+.normalBtn{
+    background-color: #FFD65A;
+    color: rgb(0, 0, 0);
+    padding: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    font-size: medium;  
+    border: none;
+}
+
+.serveDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+@media screen and (max-width:700px){
+.serveDiv{
+    display: block;
+    justify-content: center;
+    gap: 5px;
+
+}
+}
