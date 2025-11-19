@@ -17,38 +17,45 @@ import RechargeVerify, { RechargeOffersPage, RechargeOldPlansPage, RechargeOpera
 import NameMatchpage from "../pages/nameMatch/nameMatch";
 import AadhaarVerifyPage from "../pages/Aadhaar/AadhaarVerify";
 import { BbpsBillerInfoPage, BbpsBillFetch, BbpsBillPay, BbpsBillQuickPay, BbpsBillVallidation, BbpsCategoryPage } from "../pages/BBPS/Bbps";
+import Otp from "../pages/Otp/Otp";
+import Login from "../pages/Login/Login";
+import Whitelistapis from "../pages/IpAccess/IpAccess";
+import TestingKeys from "../pages/keys/TestingKeys";
 
 const AppRoute = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} >
-          <Route path="/dashboard" element={<MainContent />} />
-          <Route path="/KYC/aadhaar" element={<AadhaarVerifyPage />} />
-          <Route path="/KYC/GSTIN" element={<GSTPage />} />
-          <Route path="/KYC/Shop" element={<ShopPage />} />
-          <Route path="/KYC/MobileNumber/otpsend" element={<SendMobileOTP />} />
-          <Route path="/KYC/MobileNumber/otpverify" element={<VerifyMobileOTP />} />
-          <Route path="/KYC/Pan" element={<PanVerification />} />
-          <Route path="/KYC/PanAadhaar" element={<PanAadhaar />} />
-          <Route path="/KYC/Account" element={<AccountVerify />} />
-          <Route path="/KYC/cardValidation" element={<CardValidationPage />} />
-          <Route path="/KYC/Udyam" element={<UdyamVerifyPage />} />
-          <Route path="/KYC/Cin" element={<CinVerification />} />
-          <Route path="/KYC/NameMatch" element={<NameMatchpage />} />
-          <Route path="/KYC/aadhaar" element={<div>Aadhaar</div>} />
-          <Route path="/KYC/bank" element={<div>Bank</div>} />
-          <Route path="/Recharge/Operators" element={<RechargeOperatorsPage />} />
-          <Route path="/Recharge/Plans" element={<RechargePlansPage />} />
-          <Route path="/Recharge/Offers" element={<RechargeOffersPage />} />
-          <Route path="/Recharge/RecharUrl" element={<RechargeURLPage />} />
-          <Route path="/Recharge/OldPlans" element={<RechargeOldPlansPage />} />
-          <Route path="/bbps/Category" element={<BbpsCategoryPage />} />
-          <Route path="/bbps/BillerInfo" element={<BbpsBillerInfoPage />} />
-          <Route path="/bbps/BillFetch" element={<BbpsBillFetch />} />
-          <Route path="/bbps/BillPay" element={<BbpsBillPay />} />
-          <Route path="/bbps/BillValidation" element={<BbpsBillVallidation />} />
-          <Route path="/bbps/QuickPay" element={<BbpsBillQuickPay />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/otpVerify" element={<Otp />} />
+        <Route path="/dashboard" element={<Dashboard />} >
+          <Route index element={<MainContent />} />
+          <Route path="KYC/aadhaar" element={<AadhaarVerifyPage />} />
+          <Route path="IpAccess" element={<Whitelistapis />} />
+          <Route path="TestingKeys" element={<TestingKeys />} />
+          <Route path="KYC/GSTIN" element={<GSTPage />} />
+          <Route path="KYC/Shop" element={<ShopPage />} />
+          <Route path="KYC/MobileNumber/otpsend" element={<SendMobileOTP />} />
+          <Route path="KYC/MobileNumber/otpverify" element={<VerifyMobileOTP />} />
+          <Route path="KYC/Pan" element={<PanVerification />} />
+          <Route path="KYC/PanAadhaar" element={<PanAadhaar />} />
+          <Route path="KYC/Account" element={<AccountVerify />} />
+          <Route path="KYC/cardValidation" element={<CardValidationPage />} />
+          <Route path="KYC/Udyam" element={<UdyamVerifyPage />} />
+          <Route path="KYC/Cin" element={<CinVerification />} />
+          <Route path="KYC/NameMatch" element={<NameMatchpage />} />
+          <Route path="KYC/bank" element={<div>Bank</div>} />
+          <Route path="Recharge/Operators" element={<RechargeOperatorsPage />} />
+          <Route path="Recharge/Plans" element={<RechargePlansPage />} />
+          <Route path="Recharge/Offers" element={<RechargeOffersPage />} />
+          <Route path="Recharge/RecharUrl" element={<RechargeURLPage />} />
+          <Route path="Recharge/OldPlans" element={<RechargeOldPlansPage />} />
+          <Route path="bbps/Category" element={<BbpsCategoryPage />} />
+          <Route path="bbps/BillerInfo" element={<BbpsBillerInfoPage />} />
+          <Route path="bbps/BillFetch" element={<BbpsBillFetch />} />
+          <Route path="bbps/BillPay" element={<BbpsBillPay />} />
+          <Route path="bbps/BillValidation" element={<BbpsBillVallidation />} />
+          <Route path="bbps/QuickPay" element={<BbpsBillQuickPay />} />
         </Route>
       </Routes>
     </Router>

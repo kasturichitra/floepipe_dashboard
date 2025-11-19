@@ -62,42 +62,42 @@ const Dashboard = () => {
             </li>
             {isKycOpen && (
               <ul className="text-xs">
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/aadhaar")}>
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/aadhaar")}>
                  <span className="text-orange-400 rounded">POST:</span> Aadhaar Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/Pan")}>
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Pan")}>
                  <span className="text-orange-400 rounded">POST:</span> Pan Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/PanAadhaar")}>
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/PanAadhaar")}>
                  <span className="text-orange-400 rounded">POST:</span> Pan to Aadhaar Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/Account")}>
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Account")}>
                  <span className="text-orange-400 rounded">POST:</span> Bank Account Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/GSTIN")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/GSTIN")} >
                  <span className="text-orange-400 rounded">POST:</span> GST Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/Shop")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Shop")} >
                  <span className="text-orange-400 rounded">POST:</span> Shop Verification
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/MobileNumber/otpsend")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/MobileNumber/otpsend")} >
                  <span className="text-orange-400 rounded">POST:</span> MobileNumber Send OTP
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/MobileNumber/otpverify")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/MobileNumber/otpverify")} >
                  <span className="text-orange-400 rounded">POST:</span> MobileNumber Verify OTP
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/cardValidation")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/cardValidation")} >
                  <span className="text-orange-400 rounded">POST:</span> card Verify
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/Cin")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Cin")} >
                  <span className="text-orange-400 rounded">POST:</span> CIN Verify
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/Udyam")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Udyam")} >
                  <span className="text-orange-400 rounded">POST:</span> Udyam Verify
                 </li>
-                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/KYC/NameMatch")} >
+                <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/NameMatch")} >
                  <span className="text-orange-400 rounded">POST:</span> Name Verify
-                </li>
+                </li> 
               </ul>
             )}
             <li className="sidebar-item flex justify-between items-center"
@@ -111,19 +111,19 @@ const Dashboard = () => {
             {
               isRechargeOpen && (
                 <ul className="text-xs">
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/Recharge/Operators")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/Recharge/Operators")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Operators
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/Recharge/Plans")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/Recharge/Plans")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Plans
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/Recharge/Offers")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/Recharge/Offers")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch OffersPlans
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/Recharge/RecharUrl")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/Recharge/RecharUrl")}>
                     <span className="text-orange-400 rounded">POST:</span> Recharge URL
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/Recharge/OldPlans")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/Recharge/OldPlans")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Old Plans
                   </li>
                 </ul>
@@ -140,22 +140,22 @@ const Dashboard = () => {
             {
               isBbpsOpen && (
                 <ul className="text-xs">
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/Category")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/Category")}>
                     <span className="text-green-400 rounded">GET:</span>Fetch Category
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/BillerInfo")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillerInfo")}>
                     <span className="text-green-400 rounded">GET:</span> Fetch BillerInfo
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/BillFetch")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillFetch")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Bill Fetch
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/BillPay")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillPay")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Bill pay
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/BillValidation")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillValidation")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Bill Validation
                   </li>
-                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/bbps/QuickPay")}>
+                  <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/QuickPay")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Bill Quick Pay
                   </li>
                 </ul>
