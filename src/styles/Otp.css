@@ -1,174 +1,41 @@
-/* -------------------------------------------------
-   ULTRA PREMIUM DARK NEON THEME
-------------------------------------------------- */
-:root {
-    --bg-main: #05060f;
-    --bg-gradient: radial-gradient(circle at 50% 10%, #1b1f34 0%, #05060f 80%);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --input-bg: rgba(255, 255, 255, 0.06);
-    --input-border: rgba(255, 255, 255, 0.12);
-    --text-primary: #e8e9ef;
-    --text-secondary: #a5a6b0;
-    --purple-glow: #a855ff;
-    --purple-strong: #c084fc;
-    --btn-glow: rgba(168, 85, 255, 0.45);
-    --btn-hover: #c77dff;
+/* otp.css */
+
+/* Centering background like Figma */
+.otp-bg {
+  @apply min-h-screen w-full flex justify-center items-center bg-black relative;
 }
 
-body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background: var(--bg-gradient);
-    color: var(--text-primary);
+/* Main OTP Box */
+.otp-card {
+  @apply w-full max-w-md bg-[#1b1b1d] rounded-2xl p-8 shadow-xl border border-gray-700;
 }
 
-/* Center wrapper */
-.LoginDiv {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+/* Logo container */
+.otp-logo {
+  @apply w-16 h-16 mx-auto mb-6 rounded-xl flex items-center justify-center;
 }
 
-/* -------------------------------------------------
-   PREMIUM GLASS CARD
-------------------------------------------------- */
-.w-75.h-75.bg-gradient {
-    background: var(--glass-bg) !important;
-    border-radius: 22px;
-    padding: 40px;
-    box-shadow: 
-        0 0 25px rgba(168, 85, 255, 0.12),
-        inset 0 0 15px rgba(255,255,255,0.06);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(22px);
+/* OTP Input Boxes */
+.otp-input-box {
+  @apply w-12 h-12 border border-gray-500 bg-transparent text-white 
+         rounded-lg text-center text-xl outline-none focus:border-purple-500;
 }
 
-/* -------------------------------------------------
-   LEFT BANNER (polished minimal look)
-------------------------------------------------- */
-.col-7 {
-    background: transparent !important;
-    padding: 40px;
-    border-right: 1px solid rgba(255,255,255,0.06);
+/* Submit Button */
+.otp-submit-btn {
+  @apply w-full py-3 mt-6 rounded-lg font-semibold text-white 
+         bg-purple-600 hover:bg-purple-700 transition duration-300;
 }
 
-.col-7 img {
-    width: 320px;
-    filter: drop-shadow(0 0 15px rgba(168, 85, 255, 0.35));
+/* “Resend OTP” */
+.resend-link {
+  @apply text-purple-400 cursor-pointer text-sm ml-2 hover:text-purple-300;
 }
 
-.col-7 h1 {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--purple-strong);
+/* “Sign up” */
+.signup-text {
+  @apply text-white text-sm mt-6 text-center;
 }
-
-/* Tight professional text */
-.col-7 div {
-    color: var(--text-secondary);
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* -------------------------------------------------
-   RIGHT FORM GLASS CARD
-------------------------------------------------- */
-.border-primary-subtle {
-    width: 380px;
-    padding: 40px 35px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 20px !important;
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 
-        0 0 18px rgba(168, 85, 255, 0.15),
-        inset 0 0 8px rgba(255,255,255,0.05);
-}
-
-.border-primary-subtle h2 {
-    color: var(--text-primary);
-    font-size: 28px;
-    font-weight: 700;
-}
-
-/* -------------------------------------------------
-   INPUT FIELDS — premium glowing style
-------------------------------------------------- */
-.form-control {
-    background: var(--input-bg) !important;
-    border: 1px solid var(--input-border) !important;
-    color: var(--text-primary);
-    padding: 14px !important;
-    border-radius: 12px !important;
-    transition: 0.25s ease;
-}
-
-.form-control:focus {
-    background: rgba(255,255,255,0.1) !important;
-    border-color: var(--purple-glow) !important;
-    box-shadow: 
-        0 0 12px rgba(168, 85, 255, 0.4),
-        0 0 4px rgba(168, 85, 255, 0.6);
-}
-
-/* Eye icon */
-.show-password-btn {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    font-size: 18px;
-    color: var(--text-secondary);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-/* -------------------------------------------------
-   BUTTON — glowing neon CTA
-------------------------------------------------- */
-button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    margin-top: 12px;
-    border-radius: 10px !important;
-    border: none !important;
-    background: var(--purple-glow);
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    box-shadow: 0 0 18px var(--btn-glow);
-    transition: 0.25s ease;
-}
-
-button[type="submit"]:hover {
-    background: var(--btn-hover);
-    box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
-}
-
-/* Register link */
-.text-danger {
-    color: var(--purple-strong) !important;
-    font-weight: 500;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-.text-danger:hover {
-    text-decoration: underline;
-}
-
-/* -------------------------------------------------
-   RESPONSIVE
-------------------------------------------------- */
-@media (max-width: 992px) {
-    .col-7 {
-        display: none !important;
-    }
-    .border-primary-subtle {
-        width: 100%;
-    }
+.signup-text span {
+  @apply text-purple-400 cursor-pointer;
 }

@@ -1,149 +1,77 @@
-import axios from "axios";
-import React, { useState } from "react";
-// import "../Registeration/Registeration.css";
-import { useNavigate } from "react-router-dom";
-import data from "../../json/Data";
-import { toast } from "react-toastify";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as yup from "yup";
-import Call_Api from "../../Handileapicall/call_api";
+import React, { useState, useRef } from "react";
 import "../../styles/Otp.css";
+import logo from "../../assets/images/Asset 41@300x-8.png"
 
-import { useSelector } from "react-redux";
-import handleuser from "../../common/getUserDetails/GetUserDetails";
+const OtpScreen = ({ navigation }) => {
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const inputRefs = useRef([]);
 
-const Otp = () => {
-  const navigate = useNavigate();
+  const handleInput = (value, index) => {
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
 
-  const token = useSelector((state) => state.userToken.token);
-  console.log("Token from Redux in OTP page: ", token);
-
-  const settingTokenToLocalStorage = (token) => {
-    if (!token) {
-      console.error("No token provided to store in localStorage.");
-      alert("Token Not Provided");
-      return;
-    }
-    try {
-      localStorage.setItem("token", JSON.stringify(token));
-      console.log("Token stored successfully in localStorage.");
-    } catch (err) {
-      console.error("Error storing token in localStorage:", err);
+    if (value && index < 5) {
+      inputRefs.current[index + 1].focus();
     }
   };
 
-  const handlegetuser = async () => {
-    console.log("entered into handleuser")
-      try {
-        const response = await handleuser()
-        console.log("response in handlegetuser",response);
-        if (response?.response?.response?.role == "admin") {
-          navigate("/dashboard");
-        } else if(response?.response?.response?.role == "user"){
-          navigate("/dashboard");
-        } else {
-          localStorage.removeItem("token");
-          navigate("/login");
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    
+  const handleSubmit = () => {
+    const finalOtp = otp.join("");
+    console.log("Submitted OTP:", finalOtp);
+    navigation.navigate("Maindashboard");
+  };
+
   return (
-    <>
-      <div>
-        <div className="otpDiv">
-          <div className="w-75 h-75 bg-gradient row p-3 rounded-2">
-            <div className="col-7 text-light d-flex justify-content-end px-5">
-              <div>
-                <img
-                  src="/images/ntar.gif-_VGlxBXr.webp"
-                  width="400px"
-                  alt="noImage"
-                />
-                <div>
-                  <h1 className="text-warning">Well come to Ntar !!</h1>
-                  <div className="fw-bold fs-2">
-                    Secure Access to Our API Platform
-                  </div>
-                  <div>
-                    login in securely to get access to the full suite of APIs.
-                    Manage your keys,
-                    <div>
-                      monitor performance, and explore new integrations to
-                      accelerate your development.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col text-light d-flex justify-content-center align-items-center">
-              <div className="border border-1 border-primary-subtle h-auto rounded-4 p-3 px-5">
-                <h2 className=" text-center mt-5">Verify OTP</h2>
-                <Formik
-                  initialValues={{ submittedOtp: "" }}
-                  validationSchema={yup.object({
-                    submittedOtp: yup.string().required("Please enter OTP"),
-                  })}
-                  onSubmit={async (values) => {
-                    try {
-                      const response = await Call_Api(
-                        "/login/otpVerify",
-                        "POST",
-                        values,
-                        token
-                      ); 
-                      console.log(response, "this response from otp");
-                      toast.success(response?.response?.message);
-                      if (response.success) {
-                        settingTokenToLocalStorage(token);
-                        await handlegetuser();
-                         navigate("/dashboard");  
-                      } else {
-                        localStorage.clear("token");
-                      }
-                    } catch (error) {
-                      toast.error(error?.response?.message);
-                      console.log(error);
-                    }
-                  }}
-                >
-                  {(form) => (
-                    <Form>
-                      <div className=" d-flex flex-column justify-content-center">
-                        <div className="mt-5">
-                          <b>Enter OTP</b>
-                          <Field
-                            type="text"
-                            name="submittedOtp"
-                            placeholder="Enter Otp"
-                            className="form-control mt-2 p-2"
-                          />
-                          <ErrorMessage
-                            name="submittedOtp"
-                            component="div"
-                            className="text-danger"
-                          />
-                          <button
-                            type="submit"
-                            className="btn btn-primary w-100 mt-4 p-2"
-                          >
-                            Verify OTP
-                          </button>
-                        </div>
-                        <div></div>
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            </div>
-          </div>
+    <div className="otp-bg">
+      <div className="otp-card">
+
+     
+        <div className="otp-logo">
+          <img
+            src={logo}
+            alt="logo"
+            className="w-16 h-16 rounded-xl shadow-lg"
+          />
         </div>
+
+     
+        <h2 className="text-center text-white text-xl font-semibold mb-6">
+          Sign in to flowpipe
+        </h2>
+
+      
+        <p className="text-gray-300 mb-3">Enter the OTP</p>
+
+        <div className="flex gap-3 mb-3">
+          {otp.map((value, index) => (
+            <input
+              key={index}
+              ref={(ref) => (inputRefs.current[index] = ref)}
+              value={value}
+              maxLength={1}
+              onChange={(e) => handleInput(e.target.value, index)}
+              className="otp-input-box"
+            />
+          ))}
+        </div>
+
+        <div className="flex justify-end mb-3">
+          <span className="resend-link">Resend OTP</span>
+        </div>
+
+      
+        <button className="otp-submit-btn" onClick={handleSubmit}>
+          Submit
+        </button>
+
+     
+        <p className="signup-text">
+          Don’t have an account? <span>Sign up</span>
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Otp;
+export default OtpScreen;
