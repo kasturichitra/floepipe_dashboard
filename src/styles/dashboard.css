@@ -1,10 +1,21 @@
 
-.sidebar {
-  @apply w-64 bg-secondary text-white flex flex-col p-6;
+.DashboardLogo{
+  background-image: url("../assets/images/FlowpipeLogo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 18px;
+  margin-right: 5px
+}
+.sidebar-title {
+  font-weight: 700;
+  font-size: 35px;
+  font-style: Konnect
 }
 
-.sidebar-title {
-  @apply text-xl font-bold mb-6;
+.sidebar {
+  background-color: '#1E2021';
+  @apply w-80 text-white flex flex-col p-6;
 }
 
 .sidebar-section-title {

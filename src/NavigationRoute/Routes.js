@@ -21,12 +21,14 @@ import Otp from "../pages/Otp/Otp";
 import Login from "../pages/Login/Login";
 import Whitelistapis from "../pages/IpAccess/IpAccess";
 import TestingKeys from "../pages/keys/TestingKeys";
+import MainDashboardPage from "../pages/MainPage/MainPage";
 
 const AppRoute = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<MainDashboardPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/otpVerify" element={<Otp />} />
         <Route path="/dashboard" element={<Dashboard />} >
           <Route index element={<MainContent />} />
@@ -44,7 +46,6 @@ const AppRoute = () => {
           <Route path="KYC/Udyam" element={<UdyamVerifyPage />} />
           <Route path="KYC/Cin" element={<CinVerification />} />
           <Route path="KYC/NameMatch" element={<NameMatchpage />} />
-          <Route path="KYC/bank" element={<div>Bank</div>} />
           <Route path="Recharge/Operators" element={<RechargeOperatorsPage />} />
           <Route path="Recharge/Plans" element={<RechargePlansPage />} />
           <Route path="Recharge/Offers" element={<RechargeOffersPage />} />

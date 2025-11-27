@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
-  FiHome,
-  FiCreditCard,
-  FiUser,
-  FiSettings,
   FiBookOpen,
   FiBriefcase,
-  FiHelpCircle,
-  FiPlusCircle,
-  FiBell,
   FiChevronDown,
   FiChevronUp,
-  FiSmartphone
+  FiHelpCircle,
+  FiHome,
+  FiSettings,
+  FiSmartphone,
+  FiUser
 } from "react-icons/fi";
-import "../../styles/dashboard.css";
 import { Outlet, useNavigate } from "react-router-dom";
+import "../../styles/dashboard.css";
 
 const SidebarItem = ({ icon: Icon, label, active, onClick }) => (
   <li
@@ -36,14 +33,11 @@ const Dashboard = () => {
     <div className="flex h-screen font-inter">
       {/* Sidebar */}
       <aside className="sidebar overflow-auto">
-        <h1 className="sidebar-title">ApiModule Dashboard</h1>
+        <div className="sidebar-title"><span className="DashboardLogo"></span>flowpipe</div>
 
-        <div className="mt-6">
-          <p className="sidebar-section-title">Support</p>
-          <ul className="space-y-1">
-            <SidebarItem icon={FiUser} label="Api Keys" />
-            <SidebarItem icon={FiHelpCircle} label="Whitelist IP" />
-          </ul>
+        <div className="mt-6 btn-group bg-gray-700 p-2">
+          <span className="bi-search"></span>
+          <input type="text" placeholder="Search ..." className=" bg-gray-700" />
         </div>
 
         <div>
@@ -52,7 +46,7 @@ const Dashboard = () => {
             <SidebarItem icon={FiHome} label="Dashboard" active onClick={() => navigate("/dashboard")} />
             <li
               className="sidebar-item flex justify-between items-center"
-              onClick={() => { setIsRechargeOpen(false); setIsKycOpen(!isKycOpen) }}
+              onClick={() => {setIsBbpsOpen(false); setIsRechargeOpen(false); setIsKycOpen(!isKycOpen) }}
             >
               <div className="flex items-center gap-3">
                 <FiUser className="text-lg" />
@@ -63,45 +57,45 @@ const Dashboard = () => {
             {isKycOpen && (
               <ul className="text-xs">
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/aadhaar")}>
-                 <span className="text-orange-400 rounded">POST:</span> Aadhaar Verification
+                  <span className="text-orange-400 rounded">POST:</span> Aadhaar Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Pan")}>
-                 <span className="text-orange-400 rounded">POST:</span> Pan Verification
+                  <span className="text-orange-400 rounded">POST:</span> Pan Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/PanAadhaar")}>
-                 <span className="text-orange-400 rounded">POST:</span> Pan to Aadhaar Verification
+                  <span className="text-orange-400 rounded">POST:</span> Pan to Aadhaar Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Account")}>
-                 <span className="text-orange-400 rounded">POST:</span> Bank Account Verification
+                  <span className="text-orange-400 rounded">POST:</span> Bank Account Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/GSTIN")} >
-                 <span className="text-orange-400 rounded">POST:</span> GST Verification
+                  <span className="text-orange-400 rounded">POST:</span> GST Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Shop")} >
-                 <span className="text-orange-400 rounded">POST:</span> Shop Verification
+                  <span className="text-orange-400 rounded">POST:</span> Shop Verification
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/MobileNumber/otpsend")} >
-                 <span className="text-orange-400 rounded">POST:</span> MobileNumber Send OTP
+                  <span className="text-orange-400 rounded">POST:</span> MobileNumber Send OTP
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/MobileNumber/otpverify")} >
-                 <span className="text-orange-400 rounded">POST:</span> MobileNumber Verify OTP
+                  <span className="text-orange-400 rounded">POST:</span> MobileNumber Verify OTP
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/cardValidation")} >
-                 <span className="text-orange-400 rounded">POST:</span> card Verify
+                  <span className="text-orange-400 rounded">POST:</span> card Verify
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Cin")} >
-                 <span className="text-orange-400 rounded">POST:</span> CIN Verify
+                  <span className="text-orange-400 rounded">POST:</span> CIN Verify
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/Udyam")} >
-                 <span className="text-orange-400 rounded">POST:</span> Udyam Verify
+                  <span className="text-orange-400 rounded">POST:</span> Udyam Verify
                 </li>
                 <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/KYC/NameMatch")} >
-                 <span className="text-orange-400 rounded">POST:</span> Name Verify
-                </li> 
+                  <span className="text-orange-400 rounded">POST:</span> Name Verify
+                </li>
               </ul>
             )}
             <li className="sidebar-item flex justify-between items-center"
-              onClick={() => { setIsKycOpen(false); setIsRechargeOpen(!isRechargeOpen) }}>
+              onClick={() => {setIsBbpsOpen(false); setIsKycOpen(false); setIsRechargeOpen(!isRechargeOpen) }}>
               <div className="flex items-center gap-3">
                 <FiSmartphone className="text-lg" />
                 <span className="text-sm font-medium">Recharge</span>
@@ -147,7 +141,7 @@ const Dashboard = () => {
                     <span className="text-green-400 rounded">GET:</span> Fetch BillerInfo
                   </li>
                   <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillFetch")}>
-                    <span className="text-orange-400 rounded">POST:</span> Fetch Bill Fetch
+                    <span className="text-green-400 rounded">GET:</span> Fetch Bill Fetch
                   </li>
                   <li className="sidebar-item text-gray-300 hover:text-white" onClick={() => navigate("/dashboard/bbps/BillPay")}>
                     <span className="text-orange-400 rounded">POST:</span> Fetch Bill pay
@@ -161,8 +155,6 @@ const Dashboard = () => {
                 </ul>
               )
             }
-            <SidebarItem icon={FiCreditCard} label="UPI Services" />
-            <SidebarItem icon={FiSettings} label="Payouts" />
           </ul>
         </div>
 
@@ -175,9 +167,8 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       {/* <Outlet /> */}
-      <div className="flex flex-col w-full overflow-auto">
+       <div className="flex flex-col w-full overflow-auto">
         <Outlet />
       </div>
     </div>
