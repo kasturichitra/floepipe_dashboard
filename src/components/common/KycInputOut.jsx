@@ -64,12 +64,13 @@ const KycReuseComponet = ({ data }) => {
                                 <label className="block text-sm font-semibold text-purple-900 mb-2">
                                     {input.replace(/([A-Z])/g, " $1").toUpperCase()} <span className="text-gray-400">{data?.bodyParams}</span> :
                                 </label>
-
                                 <input
                                     type="text"
-                                    placeholder={`Enter ${input}`}
+                                    placeholder={!data?.isDisable ? `Enter ${input}` : ''}
                                     name={input}
-                                    className="w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600  "
+                                    value={data?.isDisable ? data?.Inputvalues[index] : undefined}
+                                    disabled={data?.isDisable ? true:false}
+                                    className="w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
                                     onChange={HandleChangeInput}
                                 />
                             </div>
@@ -89,8 +90,8 @@ const KycReuseComponet = ({ data }) => {
                         <div className="bg-[#0d1117] text-white p-5 rounded-xl">
                             <div className="bg-white text-gray-900 mb-4 p-3 rounded-lg shadow border border-gray-200">
                                 <div className="flex items-center gap-3">
-                                    <span className="bg-orange-500 text-white px-3 py-2 rounded font-semibold text-sm">
-                                        POST:
+                                    <span className={`${data?.apiUrl?.Method === 'Get'? 'bg-green-500':' bg-orange-500'} text-white px-3 py-2 rounded font-semibold text-sm`}>
+                                       {data?.apiUrl?.Method}: 
                                     </span>
                                     <select
                                         className="

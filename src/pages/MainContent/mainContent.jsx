@@ -15,22 +15,22 @@ const MainContent = () => {
                     <button className="top-bar-btn">
                         <FiBell /> Updates
                     </button>
-                     <button
-                className="top-bar-btn"
-                onClick={() => navigate("/")}
-            >
-                <img 
-                    src="/profile.png" 
-                    alt="profile"
-                    style={{
-                        width: "28px",
-                        height: "28px",
-                        borderRadius: "50%",
-                        marginRight: "6px"
-                    }}
-                />
-                logout
-            </button>
+                    <button
+                        className="top-bar-btn"
+                        onClick={() => navigate("/")}
+                    >
+                        <img
+                            src="/profile.png"
+                            alt="profile"
+                            style={{
+                                width: "28px",
+                                height: "28px",
+                                borderRadius: "50%",
+                                marginRight: "6px"
+                            }}
+                        />
+                        logout
+                    </button>
                 </div>
 
                 <button className="add-account-btn">

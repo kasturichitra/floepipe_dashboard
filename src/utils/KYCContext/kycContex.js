@@ -19,7 +19,7 @@ export const Aadhaar = {
     submitButton: 'Verify AadhaarNumber'
   },
   inputParams: ["aadharNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/business/Gstinverify' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -91,7 +91,7 @@ export const GstIN = {
     submitButton: 'Verify GSTIN'
   },
   inputParams: ["gstinNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/business/Gstinverify' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -163,7 +163,7 @@ export const SHOP = {
     submitButton: 'Verify Shop'
   },
   inputParams: ['registrationNumber', 'state'],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -232,7 +232,7 @@ export const SendOTP = {
     submitButton: 'Send OTP to Number'
   },
   inputParams: ['mobileNumber'],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -301,7 +301,7 @@ export const VerifyOTP = {
     submitButton: 'Verify OTP'
   },
   inputParams: ["submittedOtp", "mobile"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -370,7 +370,7 @@ export const panVerify = {
     submitButton: 'Verify Pan'
   },
   inputParams: ["panNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -439,7 +439,7 @@ export const panAadhaarVerify = {
     submitButton: 'Verify PantoAadhaar'
   },
   inputParams: ["panNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -508,7 +508,7 @@ export const accountVerify = {
     submitButton: 'Verify Account'
   },
   inputParams: ["account_no", "ifsc"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -577,7 +577,7 @@ export const CINVerify = {
     submitButton: 'Verify CIN'
   },
   inputParams: ["CIN"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -736,7 +736,7 @@ export const CINVerify = {
     "NICCode3": null,
     "NICCode3Desc": null
   }
-}
+};
 export const UdamVerify = {
   apiUrl: {
     Method:'Post',
@@ -750,7 +750,7 @@ export const UdamVerify = {
     submitButton: 'Verify Udyam number'
   },
   inputParams: ["udyamNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -777,7 +777,7 @@ export const UdamVerify = {
       }
     }
   }
-}
+};
 export const cardVerify = {
   apiUrl: {
     Method:'Post',
@@ -791,7 +791,7 @@ export const cardVerify = {
     submitButton: 'Verify CreditCard'
   },
   inputParams: ["creditCardNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -818,7 +818,7 @@ export const cardVerify = {
       }
     }
   }
-}
+};
 export const NameMatch = {
   apiUrl: {
     Method:'Post',
@@ -832,7 +832,7 @@ export const NameMatch = {
     submitButton: 'Verify Name'
   },
   inputParams: ["firstName", "secondName"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -859,7 +859,7 @@ export const NameMatch = {
       }
     }
   }
-}
+};
 
 // Recharge Responses
 export const RechargeOperators = {
@@ -875,7 +875,7 @@ export const RechargeOperators = {
     submitButton: 'Operators Fetch'
   },
   inputParams: ["mobileNumber"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -911,7 +911,7 @@ export const RechargePlans = {
     submitButton: 'Fetch Plans'
   },
   inputParams: ["operatorcode", "cricle"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -947,7 +947,7 @@ export const RechargeOldPlans = {
     submitButton: 'Fetch oldPlans'
   },
   inputParams: ["operatorcode", "cricle"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -983,7 +983,7 @@ export const RechargeOffersPlans = {
     submitButton: 'Fetch Offers'
   },
   inputParams: ["operator_code", "mobile_no"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1019,7 +1019,7 @@ export const RechargeURL = {
     submitButton: 'Recharge'
   },
   inputParams: ["account", "actualAmount", "spKey", "transactionId", "geoCode", "customerNumber", "pincode"],
-
+  isDisable:false,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1094,6 +1094,37 @@ export const BBPSCategory = {
   },
   inputParams: ["category"],
   bodyParams:"(params)",
+  Inputvalues:["Axis"],
+  isDisable:true,
+  exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
+    --header 'Content-Type: application/json' \\
+    --header 'secretKey: {{secretKey}}' \\
+    --header 'clientId: {{clientId}}' \\
+    --data '{
+      "panNumber": ""
+  }'`,
+  exampleResponse: {
+    "message": "Success",
+    "success": true,
+    "data": {} 
+  }
+};
+export const BBPSBillerInfo = {
+  apiUrl: {
+    Method:'Get',
+    URLS: "http://localhost:7006/BBPS/bbps/billerInfo/:category",
+    testUrl: "https://localhost:7007/V1/KYC/TEST/GSTIN/Gstinverify",
+    liveUrl: "https://localhost:7007/V1/KYC/LIVE/GSTIN/Gstinverify"
+  },
+  title: {
+    header: "STEP 2: Get Biller Info",
+    headerTitle: "BBPS using NTAR service",
+    submitButton: 'Get Biller Info'
+  },
+  inputParams: ["billerId"],
+  bodyParams:"(params)",
+  Inputvalues:["AXIS000XXXXX"],
+  isDisable:true,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1116,44 +1147,6 @@ export const BBPSCategory = {
     } 
   }
 };
-
-export const BBPSBillerInfo = {
-  apiUrl: {
-    Method:'Get',
-    URLS: "http://localhost:7006/BBPS/bbps/billerInfo/:category",
-    testUrl: "https://localhost:7007/V1/KYC/TEST/GSTIN/Gstinverify",
-    liveUrl: "https://localhost:7007/V1/KYC/LIVE/GSTIN/Gstinverify"
-  },
-  title: {
-    header: "STEP 2: Get Biller Info",
-    headerTitle: "BBPS using NTAR service",
-    submitButton: 'Get Biller Info'
-  },
-  inputParams: ["billerId"],
-  bodyParams:"(params)",
-  exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
-    --header 'Content-Type: application/json' \\
-    --header 'secretKey: {{secretKey}}' \\
-    --header 'clientId: {{clientId}}' \\
-    --data '{
-      "panNumber": ""
-  }'`,
-  exampleResponse: {
-    "message": "Success",
-    "success": true,
-    "data": {
-      "ERROR": "0",
-      "STATUS": "1",
-      "Mobile": "918688571181",
-      "Operator": "Reliance Jio Infocomm Limited",
-      "OpCode": "11",
-      "Circle": "Andhra Pradesh",
-      "CircleCode": "49",
-      "Message": "Successfully"
-    } 
-  }
-}
-
 export const BBPSBillFetch = {
   apiUrl: {
     Method:'Get',
@@ -1167,8 +1160,9 @@ export const BBPSBillFetch = {
     submitButton: 'Get Bill Fetch'
   },
   inputParams: ["accessCode", "ver", "instituteId", "secretKey"],
-  bodyParams:"params",
-
+  bodyParams:"(params)",
+  Inputvalues:["77TRLSNG7N000HENTL", "1.0", "instituteId", "Tlxnsh4.43fjdsj6.dfsdkf.9gd565fdfg"],
+  isDisable:true,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1190,8 +1184,7 @@ export const BBPSBillFetch = {
       "Message": "Successfully"
     } 
   }
-}
-
+};
 export const BBPSBillPay = {
   apiUrl: {
     Method:'POST',
@@ -1205,7 +1198,9 @@ export const BBPSBillPay = {
     submitButton: 'Get Bill Fetch'
   },
   inputParams: ["accessCode", "ver", "instituteId", "secretKey", "requestId"],
-  bodyParams:"params",
+  bodyParams:"(params)",
+  Inputvalues:["77TRLSNG7N000HENTL", "1.0", "instituteId", "Tlxnsh4.43fjdsj6.dfsdkf.9gd565fdfg","8d57XXX99ac4dXXXXX09011XXXXX"],
+  isDisable:true,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1227,8 +1222,7 @@ export const BBPSBillPay = {
       "Message": "Successfully"
     } 
   }
-}
-
+};
 export const BBPSBillValidation = {
   apiUrl: {
     Method:'POST',
@@ -1242,7 +1236,9 @@ export const BBPSBillValidation = {
     submitButton: 'Bill Validate'
   },
   inputParams: ["accessCode", "ver", "instituteId", "secretKey"],
-  bodyParams:"params",
+  bodyParams:"(params)",
+  Inputvalues:["77TRLSNG7N000HENTL", "1.0", "instituteId", "Tlxnsh4.43fjdsj6.dfsdkf.9gd565fdfg"],
+  isDisable:true,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1264,8 +1260,7 @@ export const BBPSBillValidation = {
       "Message": "Successfully"
     } 
   }
-}
-
+};
 export const BBPSBillQuickPay = {
   apiUrl: {
     Method:'POST',
@@ -1279,7 +1274,9 @@ export const BBPSBillQuickPay = {
     submitButton: 'Quick pay'
   },
   inputParams: ["accessCode", "ver", "instituteId", "secretKey", "requestId"],
-  bodyParams:"(params*)",
+  bodyParams:"(params)",
+  Inputvalues:["77TRLSNG7N000HENTL", "1.0", "instituteId", "Tlxnsh4.43fjdsj6.dfsdkf.9gd565fdfg","8d57XXX99ac4dXXXXX09011XXXXX"],
+  isDisable:true,
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -1301,8 +1298,4 @@ export const BBPSBillQuickPay = {
       "Message": "Successfully"
     } 
   }
-}
-
-
-
-
+};
