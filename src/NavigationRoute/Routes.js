@@ -22,6 +22,8 @@ import Login from "../pages/Login/Login";
 import Whitelistapis from "../pages/IpAccess/IpAccess";
 import TestingKeys from "../pages/keys/TestingKeys";
 import MainDashboardPage from "../pages/MainPage/MainPage";
+import ApiKeys from "../components/apiKeys/apikeys";
+import WhiteListIP from "../components/whiteList/whiteList";
 
 const AppRoute = () => {
   return (
@@ -32,6 +34,8 @@ const AppRoute = () => {
         <Route path="/otpVerify" element={<Otp />} />
         <Route path="/dashboard" element={<Dashboard />} >
           <Route index element={<MainContent />} />
+          <Route path="apiKeys" element={<ApiKeys />} />
+          <Route path="WhitelistIP" element={<WhiteListIP />} />
           <Route path="KYC/aadhaar" element={<AadhaarVerifyPage />} />
           <Route path="IpAccess" element={<Whitelistapis />} />
           <Route path="TestingKeys" element={<TestingKeys />} />

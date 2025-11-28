@@ -4,6 +4,71 @@ export const ERROR_RESPONSES = {
   503: { message: "Service Unavailable", success: false },
   504: { message: "Gateway Timeout", success: false }
 };
+// Regex partern
+
+const validationPatterns = [
+  {
+    key: "mobile",
+    label: "Mobile Number",
+    regex: "^[6-9]\\d{9}$",
+    message: "Enter a valid 10-digit mobile number"
+  },
+  {
+    key: "otp",
+    label: "OTP",
+    regex: "^\\d{4}$",
+    message: "Enter a valid 4-digit OTP"
+  },
+  {
+    key: "gstin",
+    label: "GSTIN",
+    regex: "^\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}[A-Z\\d]{1}Z[A-Z\\d]{1}$",
+    message: "Enter a valid GSTIN"
+  },
+  {
+    key: "email",
+    label: "Email",
+    regex: "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+    message: "Enter a valid email address"
+  },
+  {
+    key: "password",
+    label: "Password",
+    regex: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+    message: "Password must be at least 8 characters with upper, lower, number & special char"
+  },
+  {
+    key: "name",
+    label: "Full Name",
+    regex: "^[A-Za-z\\s]+$",
+    message: "Only alphabets are allowed"
+  },
+  {
+    key: "number",
+    label: "Only Numbers",
+    regex: "^\\d+$",
+    message: "Only numeric values are allowed"
+  },
+  {
+    key: "ifsc",
+    label: "IFSC Code",
+    regex: "^[A-Z]{4}0[A-Z0-9]{6}$",
+    message: "Enter a valid IFSC code"
+  },
+  {
+    key: "pan",
+    label: "PAN Number",
+    regex: "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+    message: "Enter a valid PAN number"
+  },
+  {
+    key: "pincode",
+    label: "Pincode",
+    regex: "^[1-9]\\d{5}$",
+    message: "Enter a valid 6-digit pincode"
+  }
+];
+
 
 // success Response
 export const Aadhaar = {
@@ -92,6 +157,7 @@ export const GstIN = {
   },
   inputParams: ["gstinNumber"],
   isDisable:false,
+  regexValues:["^\\d{2}[A-Z]{5}\\d{4}[A-Z]{1}[A-Z\\d]{1}Z[A-Z\\d]{1}$"],
   exampleCurl: `curl --location 'http://localhost:7006/business/Gstinverify' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -233,6 +299,7 @@ export const SendOTP = {
   },
   inputParams: ['mobileNumber'],
   isDisable:false,
+  regexValues:["^[6-9]\\d{9}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -302,6 +369,7 @@ export const VerifyOTP = {
   },
   inputParams: ["submittedOtp", "mobile"],
   isDisable:false,
+  regexValues:["^\\d{4}$","^[6-9]\\d{9}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -371,6 +439,7 @@ export const panVerify = {
   },
   inputParams: ["panNumber"],
   isDisable:false,
+  regexValues:["^[A-Z]{5}[0-9]{4}[A-Z]{1}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -440,6 +509,7 @@ export const panAadhaarVerify = {
   },
   inputParams: ["panNumber"],
   isDisable:false,
+  regexValues:["^[A-Z]{5}[0-9]{4}[A-Z]{1}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -509,6 +579,7 @@ export const accountVerify = {
   },
   inputParams: ["account_no", "ifsc"],
   isDisable:false,
+  regexValues:["^\\d{9,18}$","^[A-Z]{4}0[A-Z0-9]{6}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -578,6 +649,7 @@ export const CINVerify = {
   },
   inputParams: ["CIN"],
   isDisable:false,
+  regexValues:["^([LU])\\d{5}[A-Z]{2}\\d{4}[A-Z]{3}\\d{6}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -740,7 +812,7 @@ export const CINVerify = {
 export const UdamVerify = {
   apiUrl: {
     Method:'Post',
-    URLS: "http://localhost:7006/udyam/verifyudyam",
+    URLS: "http://localhost:7006/udyam/udyamNumberverify",
     testUrl: "https://localhost:7007/V1/KYC/TEST/GSTIN/Gstinverify",
     liveUrl: "https://localhost:7007/V1/KYC/LIVE/GSTIN/Gstinverify"
   },
@@ -792,6 +864,7 @@ export const cardVerify = {
   },
   inputParams: ["creditCardNumber"],
   isDisable:false,
+
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -822,7 +895,7 @@ export const cardVerify = {
 export const NameMatch = {
   apiUrl: {
     Method:'Post',
-    URLS: "http://localhost:7006/name/compareName",
+    URLS: "http://localhost:7006/name/compareNames",
     testUrl: "https://localhost:7007/V1/KYC/TEST/GSTIN/Gstinverify",
     liveUrl: "https://localhost:7007/V1/KYC/LIVE/GSTIN/Gstinverify"
   },
@@ -833,6 +906,7 @@ export const NameMatch = {
   },
   inputParams: ["firstName", "secondName"],
   isDisable:false,
+  regexValues:["^[A-Za-z\\s]+$","^[A-Za-z\\s]+$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
@@ -876,6 +950,7 @@ export const RechargeOperators = {
   },
   inputParams: ["mobileNumber"],
   isDisable:false,
+  regexValues:["^[6-9]\\d{9}$"],
   exampleCurl: `curl --location 'http://localhost:7006/shop/shopest' \\
     --header 'Content-Type: application/json' \\
     --header 'secretKey: {{secretKey}}' \\
