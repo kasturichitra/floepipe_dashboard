@@ -11,19 +11,17 @@ const KycReuseComponet = ({ data }) => {
     const [formData, setFormData] = useState({});
     const [apiResponse, setApiResponse] = useState({});
     const [Loading, setLoading] = useState(false);
-    const [errorMessage, setApiErrormessage] = useState('');
+    const [apiErrorMessage, setApiErrormessage] = useState('');
     const [errors, setErrors] = useState({}); // ONly for the regex 
     const [IsKyc, setIsKyc] = useState(false)
     const [showAlert, setShowAlert] = useState(false);
     const [selectedExampleCode, setSelectedExampleCode] = useState(
-        EXResponse.AadhaarNumberResponse
+        data.exampleResponse
     );
 
-    // const HandleChangeInput = (e) => {
-    //     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // };
-
     const HandleChangeInput = (e) => {
+        console.log('Handle input change is trigred')
+        setApiErrormessage("")
         const { name, value, pattern } = e.target;
 
         setFormData((prev) => ({
@@ -36,30 +34,43 @@ const KycReuseComponet = ({ data }) => {
             if (!regex?.test(value)) {
                 setErrors((prev) => ({
                     ...prev,
-                    [name]: "Invalid format",
+                    [name]: "Invalid Input format",
                 }));
             } else {
                 setErrors((prev) => {
                     const updated = { ...prev };
                     delete updated[name];
+                    console.log(updated)
                     return updated;
                 });
             }
         }
     };
 
-
     const HandleVerificaton = async () => {
-        if (!IsKyc) {
-            console.log('is trigred')
-            setShowAlert(true);
+        if (Object.keys(errors).length > 0) {
+            setApiErrormessage("Please fix the validation errors before submitting.");
             return;
         }
+
+        const hasEmptyField = data?.inputParams?.some(
+            (key, index) => !data?.isDisable && !formData?.[key]
+        );
+
+        if (hasEmptyField) {
+            setApiErrormessage("All fields are required.");
+            return;
+        }
+        // if (!IsKyc) {
+        //     console.log('is trigred')
+        //     setShowAlert(true);
+        //     return;
+        // }
         setApiErrormessage('');
         setLoading(true);
         try {
             const responseData = await axios.post(`${data?.apiUrl?.URLS}`, formData);
-            console.log(responseData.data)
+            console.log(responseData?.data)
             setApiResponse(responseData?.data);
             setApiErrormessage('');
             setLoading(false)
@@ -115,10 +126,12 @@ const KycReuseComponet = ({ data }) => {
                                     pattern={data?.regexValues?.[index]}
                                     value={data?.isDisable ? data?.Inputvalues[index] : formData?.[input] || ""}
                                     disabled={data?.isDisable}
-                                    className={`w-full px-4 py-2 text-gray-900 border rounded-lg shadow-sm focus:outline-none focus:ring-2 
-    ${errors?.[input]
+                                    className={`w-full px-4 py-2 text-gray-900 border rounded-lg shadow-sm focus:outline-none focus:ring-2
+                                            ${errors?.[input]
                                             ? "border-red-500 focus:ring-red-500"
-                                            : "border-gray-300 focus:ring-purple-600 focus:border-purple-600"
+                                            : formData?.[input]
+                                                ? "border-green-500 focus:ring-green-500 focus:border-green-500"
+                                                : "border-gray-300 focus:ring-purple-600 focus:border-purple-600"
                                         }`}
                                     onChange={HandleChangeInput}
                                 />
@@ -138,6 +151,12 @@ const KycReuseComponet = ({ data }) => {
                         >
                             {Loading ? 'Loading ...' : data?.title?.submitButton}
                         </button>
+                        {apiErrorMessage && (
+                            <p className="mt-3 text-sm text-red-600 font-semibold">
+                                {apiErrorMessage}
+                            </p>
+                        )}
+
                         {!IsKyc && showAlert && (
                             <div className="relative mt-6 flex items-start gap-3 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 shadow-sm">
                                 <svg
@@ -209,7 +228,7 @@ const KycReuseComponet = ({ data }) => {
                                     <button
                                         className="absolute top-3 right-3 text-xs px-2 py-1 border border-gray-400 rounded hover:bg-white hover:text-black transition"
                                         onClick={() =>
-                                            handleCopy(data?.exampleCurl || EXResponse.AadhaarNumberCurl)
+                                            handleCopy(data?.exampleCurl || selectedExampleCode)
                                         }
                                     >
                                         📋 Copy
@@ -227,7 +246,7 @@ const KycReuseComponet = ({ data }) => {
                                     </button>
                                     <button
                                         className="bg-gray-700 text-green-400 px-6 py-1 rounded"
-                                        onClick={() => setSelectedExampleCode(EXResponse.AadhaarNumberResponse)}
+                                        onClick={() => setSelectedExampleCode(data?.exampleResponse || selectedExampleCode)}
                                     >
                                         200
                                     </button>

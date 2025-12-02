@@ -26,7 +26,7 @@ export default function DashboardPage() {
 
   return (
     <div className="h-screen w-full flex bg-[#0f0f12]">
-      <Sidebar collapsed={collapsed} />
+      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
       <div className="flex-1 flex flex-col">
         <Header onToggle={() => setCollapsed(!collapsed)} />
         <main className="flex-1 overflow-y-auto p-6 bg-[#f8f9fd]">
@@ -37,7 +37,7 @@ export default function DashboardPage() {
   );
 }
 
-function Sidebar({ collapsed }) {
+function Sidebar({ collapsed, onToggle }) {
   const [isKycOpen, setIsKycOpen] = useState(false);
   const [isRechargeOpen, setIsRechargeOpen] = useState(false);
   const [isBbpsOpen, setIsBbpsOpen] = useState(false);
@@ -67,6 +67,13 @@ function Sidebar({ collapsed }) {
               placeholder="Search..."
               onChange={(e) => HandleSearch(e)}
             />
+          </div>
+        </div>
+      )}
+      {collapsed && (
+        <div className="p-4 border-b border-white/5">
+          <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+            <Search size={16} className="text-gray-400" onClick={onToggle} />
           </div>
         </div>
       )}
@@ -212,7 +219,7 @@ function NavGroup({ icon, label, isOpen, setIsOpen, children, collapsed }) {
     <div>
       <button
         onClick={setIsOpen}
-        className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/10"
+        className={`w-full flex items-center justify-${collapsed ? "center" : "start"} px-3 py-2 rounded-lg hover:bg-white/10`}
       >
         <div className="flex items-center gap-3">
           {icon}
@@ -222,7 +229,7 @@ function NavGroup({ icon, label, isOpen, setIsOpen, children, collapsed }) {
       </button>
 
       {isOpen && !collapsed && (
-          <ul className="mt-1 ml-8 space-y-1 text-xs text-gray-300">{children}</ul>
+        <ul className="mt-1 ml-8 space-y-1 text-xs text-gray-300">{children}</ul>
       )}
     </div>
   );
